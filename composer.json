@@ -1,0 +1,26 @@
+{
+    "name":"tsingsun/yii2-easy-wechat",
+    "description":"Easywechat sdk for yii2 php framework",
+    "keyword":["yii2","Easywechat","wechat sdk"],
+    "type":"yii2-extension",
+    "license":"BSD-3-Clause",
+    "authors":[
+        {
+            "name":"QingShan li",
+            "email":"21997272@qq.com"
+        }
+    ],
+    "minimum-stability":"dev",
+    "require":{
+        "yiisoft/yii2":"~2.0.10",
+        "overtrue/wechat":"~3.1"
+    },
+    "require-dev":{
+        "phpunit/phpunit": "4.8.*"
+    },
+    "autoload":{
+        "psr-4":{
+            "yii\\easyWechat\\":"src"
+        }
+    }
+}
