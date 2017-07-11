@@ -48,7 +48,11 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
      */
     protected function mockApplication($config = [], $appClass = '\yii\console\Application')
     {
-        $config = ArrayHelper::merge(require(__DIR__ . '/config/main.php'),require(__DIR__ . '/config/main-local.php'));
+        $config = require(__DIR__ . '/config/main.php');
+        if(file_exists(__DIR__ . '/config/main-local.php')){
+            $config = ArrayHelper::merge($config,require(__DIR__ . '/config/main-local.php'));
+        }
+
         unset($config['components']['errorHandler']);
         $app = new $appClass($config);
 
