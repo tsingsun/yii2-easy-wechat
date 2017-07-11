@@ -50,15 +50,17 @@ class Wechat extends Component
     public function createEasyWechat($config)
     {
         $app = new Application($config);
-        if(!isset($config['log'])){
-            Log::setLogger(new \yii\easyWechat\Logger());
-        }else{
-            Log::notice('log component suggest use Yii Logger,it need config the log section!');
+        if (!isset($config['log'])) {
+            Log::setLogger(new Logger());
+        } else {
+            if (YII_DEBUG) {
+                Log::notice('log component suggest use Yii Logger,it need config the log section!');
+            }
         }
-        if(isset($this->config['cache'])){
+        if (isset($this->config['cache'])) {
             $cacheConfig = $this->config['cache'];
             unset($this->config['cache']);
-        }else{
+        } else {
             $cacheConfig = 'cache';
         }
         $cache = new Cache($cacheConfig);

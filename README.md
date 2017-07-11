@@ -46,11 +46,11 @@ Configuration
                     'callback' => '/examples/oauth_callback.php',
                 ],
                 'guzzle' => [
-                    'timeout' => 3.0, // 超时时间（秒）
-                    //'verify' => false, // 关掉 SSL 认证（强烈不建议！！！）
-                ],
+                    'timeout' => 3.0, //
+                    //'verify' => false, // close SSL verify（not suggust！！！）
+                ],                
                 /**
-                 * Cache
+                 * Cache,if not set ,use Yii default config cache
                  */
                 'cache'=>[
 
@@ -74,6 +74,21 @@ Configuration
 There are some change to better match for yii 
 * use Yii Logger component instead of EasyWechat default logger;
 * use Yii Cache component instead of EasyWechat default Cache that based on \Doctrine\Common\Cache\Cache.
+
+### how to use
+
+```php
+    //after configure,use it as bellow
+    /**
+    * @var Wechat $wechat use @var doc attribute to code lint
+    **/
+    $wechat = Yii::$app->get('wechat');
+    //$wechat->app is Easywechat's Application instance
+    $wechat->app->server->setMessageHandler(function ($message) {
+                return "hello world！welcome!";
+            });
+    $wechat->app->server()->send();
+```
 
 ### how to Test
 
